@@ -23,7 +23,6 @@ SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 RUN sudo apt-get update && sudo apt-get install --no-install-recommends -y \
                  nodejs \
                  npm \
-                 ruby-full \
                  python3-dev \
                  python3-pip \
                  python3-venv && \
