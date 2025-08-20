@@ -40,16 +40,6 @@ commands:
           op-value: platform/svc-cosign-public-key/notesPlain
           out-file: cosign.pub
 
-  # set-environment:
-  #   steps:
-  #     - op/env
-  #     - op/write-to-file:
-  #         op-value: platform/svc-cosign-private-key/notesPlain
-  #         out-file: cosign.key
-  #     - op/write-to-file:
-  #         op-value: platform/svc-cosign-public-key/notesPlain
-  #         out-file: cosign.pub
-
 workflows:
 
   build and publish:
@@ -67,11 +57,8 @@ workflows:
           snyk-organization: twplatformlabs
           bats-test: true
           bats-entry-point: /bin/ash
-          bats-test-path: test/circleci_gke_ops.bats
           opencontainer-labels: true
           security-scan-nofail: true
-          # after-checkout:
-          #   - op/env
           filters: *on-each-run
 
       - executor-tools/dev-release:
@@ -87,11 +74,8 @@ workflows:
           snyk-organization: twplatformlabs
           bats-test: true
           bats-entry-point: /bin/bash
-          bats-test-path: test/circleci_gke_ops.bats
           opencontainer-labels: true
           security-scan-nofail: true
-          # after-checkout:
-          #   - op/env
           filters: *on-each-run
 
       - executor-tools/publish:
@@ -135,8 +119,6 @@ workflows:
           include-commit-msg: true
           upload-artifacts: true
           artifact-folder: workspace
-          # before-release:
-          #   - set-environment
           requires:
             - alpine release
             - ubuntu release
