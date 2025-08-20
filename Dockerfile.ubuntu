@@ -31,7 +31,7 @@ RUN sudo apt-get update && sudo apt-get install --no-install-recommends -y \
     sudo ln -f -s /usr/bin/pydoc3 /usr/bin/pydoc && \
     sudo ln -f -s /usr/bin/python3 /usr/bin/python && \
     sudo ln -f -s /usr/bin/python3-config /usr/bin/python-config && \
-    sudo npm install -g bats
+    sudo npm install -g bats && \
     sudo pip install checkov --break-system-packages && \
     curl -SLO "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz" && \
     sudo tar -xvzf "google-cloud-cli-linux-x86_64.tar.gz" -C /usr/local && \
