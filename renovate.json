@@ -1,0 +1,25 @@
+{
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sENV .*?_VERSION=\"(?<currentValue>.*)\"\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ],
+  "extends": [
+    "config:recommended",
+    "group:allNonMajor",
+    ":prHourlyLimitNone",
+    ":rebaseStalePrs",
+    "schedule:earlyMondays"
+  ],
+  "ignorePresets": [
+    "group:recommended",
+    ":prHourlyLimit2"
+  ]
+}
